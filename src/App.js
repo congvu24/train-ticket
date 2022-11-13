@@ -4,25 +4,26 @@ import { createBrowserRouter, Route, Router, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Homepage from "./pages/Homepage";
+import Listpage from "./pages/Listpage";
 
 function App() {
   const router = [
     {
-      path: "/list/:from/:to/:date",
-      element: <p>List trip</p>,
+      path: "/list/*",
+      element: <Listpage />,
     },
     {
-      path: "/trip/:id",
+      path: "/trip/*",
       element: <p>trip detail</p>,
     },
     {
-      path: "/ticket/:id",
+      path: "/ticket/*",
       element: <p>ticket detail</p>,
     },
     {
       path: "/",
-      element: <Homepage />
-    }
+      element: <Homepage />,
+    },
   ];
 
   return (

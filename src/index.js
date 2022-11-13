@@ -5,19 +5,19 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "antd/dist/antd.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, BrowserRouter as Router } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const router = createBrowserRouter([{ path: "/", element: <App /> }]);
-
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router}></RouterProvider>
-    </QueryClientProvider>
+    <Router>
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+    </Router>
   </React.StrictMode>
 );
 
