@@ -8,7 +8,6 @@ export default function Listpage() {
     <div>
       <SearchBar />
       <div className='bg-gray-200'>
-
         <div style={{ maxWidth: 1280 }} className="mx-auto">
           <Row>
             <Col span={6}>

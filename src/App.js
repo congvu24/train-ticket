@@ -5,6 +5,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Homepage from "./pages/Homepage";
 import Listpage from "./pages/Listpage";
+import Trippage from "./pages/Trippage";
+import PaymentPage from "./pages/Payment";
+import TicketPage from "./pages/Ticketpage";
 
 function App() {
   const router = [
@@ -14,11 +17,15 @@ function App() {
     },
     {
       path: "/trip/*",
-      element: <p>trip detail</p>,
+      element: <Trippage />,
+    },
+    {
+      path: "/payment/*",
+      element: <PaymentPage />,
     },
     {
       path: "/ticket/*",
-      element: <p>ticket detail</p>,
+      element: <TicketPage />,
     },
     {
       path: "/",
