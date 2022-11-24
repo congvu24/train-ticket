@@ -1,11 +1,15 @@
+import { useQuery } from '@tanstack/react-query'
 import { Button, Col, DatePicker, Layout, Row, Select } from 'antd'
 import React from 'react'
 import { FaTrain } from 'react-icons/fa'
+import { apis } from '../api'
 import FAQ from '../components/FAQ'
 import SearchBar from '../components/SearchBar'
 
 
 export default function Homepage() {
+
+
   return (
     <div>
       <SearchBar />
