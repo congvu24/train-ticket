@@ -19,7 +19,7 @@ export const apis = {
   },
   trips: {
     retrieve: (query) => callGetApi(`/api/trips${query ? `?${query}` : ""}`),
-    getById: (id) => callGetApi(`/api/trips/${id}`),
+    getById: (id) => callGetApi(`/api/trips/${id}?populate=deep`),
   },
   chairs: {
     retrieve: (query) => callGetApi(`/api/chairs${query ? `?${query}` : ""}`),

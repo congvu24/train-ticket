@@ -1,8 +1,37 @@
 import { Button, Checkbox, Col, Input, Row, Select, Steps } from 'antd'
 import React from 'react'
 import { FaClock, FaHome, FaTrain } from 'react-icons/fa'
+import {useSearchParams} from "react-router-dom";
+import {useQuery} from "@tanstack/react-query";
+import {apis} from "../api";
+import {LoadingOutlined} from "@ant-design/icons";
+import _ from "lodash"
+import moment from "moment";
 
 export default function Trippage() {
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const tripCode = searchParams.get("tripCode");
+  const chairId = parseInt((searchParams.get("chair")));
+
+  const {isLoading, data} = useQuery(["trip", tripCode  ],()=> apis.trips.getById(tripCode))
+
+  const trip = data?.data;
+  const chair = _.get(trip, "attributes.train.data.attributes.Chair", []).find(chairItem=> {
+    const id = _.get(chairItem, "chair_class.data.id", null)
+    return id === chairId
+  });
+
+  console.log(chair)
+
+  const timeDiff = moment.duration(moment(_.get(trip, "attributes.endDate", "NULL")).diff(_.get(trip, "attributes.startDate", "NULL")))
+  var hours = (timeDiff.asHours()).toFixed(0);
+  var minutes = (timeDiff.asMinutes()) % 60;
+
+
+  if(isLoading) return <LoadingOutlined />
+
   return (
     <div className='bg-gray-100 h-full min-h-full'>
       <div style={{ maxWidth: 1280 }} className="mx-auto py-8">
@@ -29,29 +58,29 @@ export default function Trippage() {
                 <h2 className='text-xl font-bold'>Train Information</h2>
               </div>
               <div>
-                <h3><span>Adrsh Ngr Delhi - Howrah Jn</span> | <span>Saturday, 19 November</span></h3>
+                <h3><span>{_.get(trip, 'attributes.startStation.data.attributes.name', null)} - {_.get(trip, 'attributes.endStation.data.attributes.name')}</span> | <span>{moment(_.get(trip,"attributes.startDate")).format(("ll"))}</span></h3>
                 <div className='flex items-center'>
                   <div className='mr-24'>
                     <p className='text-blue-500 text-xl font-bold'>Train express</p>
-                    <p className='mb-2'><span className='font-semibold'>Train no:</span> 123</p>
-                    <p className='mb-2'><span className='font-semibold'>Class:</span> sleeper</p>
-                    <p className='mb-2'><span className='font-semibold'>Quota:</span> General</p>
+                    <p className='mb-2'><span className='font-semibold'>Train no:</span> {_.get(trip, 'attributes.train.data.attributes.trainCode', null)}</p>
+                    <p className='mb-2'><span className='font-semibold'>Class:</span> {_.get(chair, "chair_class.data.attributes.name")}</p>
+                    <p className='mb-2'><span className='font-semibold'>Chair price:</span> {_.get(chair, "price") || _.get(chair, "chair_class.data.attributes.price")} VND</p>
                   </div>
                   <div className='flex-1 px-4 pl-24'>
                     <Steps
                       items={[
                         {
-                          title: '04:45',
+                          title: moment(_.get(trip, "attributes.startDate", "NULL")).format("LT"),
                           status: 'wait',
                           icon: <FaTrain />,
                         },
                         {
-                          subTitle: '27h 45m',
+                          subTitle: `${hours}h ${minutes}m`,
                           status: 'wait',
                           icon: <FaClock />,
                         },
                         {
-                          title: '05:45',
+                          title: moment(_.get(trip, "attributes.endDate", "NULL")).format("LT"),
                           status: 'wait',
                           icon: <FaHome />,
                         },

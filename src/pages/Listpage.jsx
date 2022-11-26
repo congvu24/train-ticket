@@ -3,7 +3,7 @@ import { Row, Col, Button, Collapse, Checkbox, Divider, Radio } from 'antd'
 import { LoadingOutlined } from "@ant-design/icons"
 import React from 'react'
 import { FaArrowRight } from 'react-icons/fa'
-import { useSearchParams } from 'react-router-dom'
+import {useNavigate, useSearchParams} from 'react-router-dom'
 import { apis } from '../api'
 import SearchBar from '../components/SearchBar'
 import _ from "lodash"
@@ -11,8 +11,14 @@ import moment from 'moment'
 
 export default function Listpage() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const { isLoading, data } = useQuery(["trips"], () => apis.trips.retrieve(`populate=deep&filters[startStation]p=[stationCode][$eq]=${searchParams.get("start")}&filters[endStation]p=[stationCode][$eq]=${searchParams.get("end")}`))
+
+  const handleClickChair = (tripId, chair)=>{
+    navigate(`/trip?tripCode=${tripId}&chair=${chair}`);
+  };
+
 
   return (
     <div>
@@ -168,7 +174,7 @@ export default function Listpage() {
                                 <p className='mb-2 font-bold'>{_.get(chair, "chair_class.data.attributes.name", 0)}</p>
                                 <p className='mb-2 text-xs font-semibold'>{_.get(chair, "price") || _.get(chair, "chair_class.data.attributes.price")} VND</p>
                                 <p className='mb-2 text-xs text-gray-500'>12/{_.get(chair, "quantity", 0)} free</p>
-                                <Button type="primary" shape='round'>Book now</Button>
+                                <Button type="primary" shape='round' onClick={()=>handleClickChair(_.get(item, "id", null), _.get(chair, "chair_class.data.id", null))}>Book now</Button>
                               </div>
                             ))}
 
