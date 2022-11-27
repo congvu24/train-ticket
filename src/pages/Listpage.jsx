@@ -13,7 +13,7 @@ export default function Listpage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const { isLoading, data } = useQuery(["trips"], () => apis.trips.retrieve(`populate=deep&filters[startStation]p=[stationCode][$eq]=${searchParams.get("start")}&filters[endStation]p=[stationCode][$eq]=${searchParams.get("end")}`))
+  const { isLoading, data } = useQuery(["trips", searchParams.get("start"), searchParams.get("end")], () => apis.trips.retrieve(`populate=deep&filters[startStation]p=[stationCode][$eq]=${searchParams.get("start")}&filters[endStation]p=[stationCode][$eq]=${searchParams.get("end")}`))
 
   const handleClickChair = (tripId, chair)=>{
     navigate(`/trip?tripCode=${tripId}&chair=${chair}`);
@@ -183,8 +183,8 @@ export default function Listpage() {
                       </div>
                     )
                   })}
-                  {!data && <LoadingOutlined />}
-
+                  {isLoading && <LoadingOutlined />}
+                  {data && data?.data.length == 0 && <p>No trip found</p>}
                 </div>
               </div>
             </Col>

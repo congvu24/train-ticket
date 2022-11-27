@@ -24,8 +24,10 @@ export default function SearchBar() {
         else {
             if (startStation == endStation) return message.error("Start station can not be the same as end station")
 
-            if (isListPage) return {
-                // handle search without navigating to list page
+            if (isListPage) {
+                searchParams.set("start", startStation);
+                searchParams.set("end", endStation);
+                searchParams.set("time", departureTime.getTime())
             }
 
             const query = `start=${startStation}&end=${endStation}&time=${departureTime.getTime()}`
