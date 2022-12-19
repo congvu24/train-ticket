@@ -1,8 +1,8 @@
-import { Button, Checkbox, Col, Input, message, Row, Select, Steps } from 'antd'
+import { Button, Checkbox, Col, Input, message, notification, Row, Select, Steps } from 'antd'
 import React, { useState } from 'react'
 import { FaClock, FaHome, FaTrain } from 'react-icons/fa'
-import { useSearchParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { apis } from "../api";
 import { LoadingOutlined } from "@ant-design/icons";
 import _ from "lodash"
@@ -14,6 +14,7 @@ const RESERVATION_FARE = 10000;
 const TAX_PERCENT = 0;
 
 export default function Trippage() {
+  const navigate = useNavigate();
 
   // Trip section
   // =============
@@ -56,6 +57,18 @@ export default function Trippage() {
   }
 
 
+  const mutateCreateTicket = useMutation((data: any) => apis.tickets.create(data), {
+    onSuccess: (response) => {
+      navigate(`/payment/${response.data}`)
+
+    },
+    onError: (error) => {
+      console.log(error)
+      notification.error({ message: "Order ticket failed, please try again" })
+    }
+  });
+
+
   const handleSubmit = () => {
 
     if (!acceptTerm) {
@@ -64,17 +77,34 @@ export default function Trippage() {
     else if (!phone || !email) {
       message.info("Your booking information is missing.")
     }
-    else if(numberTraveler == 0){
+    else if (numberTraveler == 0) {
       message.info("Please input traveler information.")
     }
     else {
-      console.log({
+
+      mutateCreateTicket.mutate({
         email,
         phone,
         traveler,
         chairId,
-        tripCode
+        tripCode,
+        "name": "Thái Bình",
+        "journey_id": "1",
+        "journey_arrive": "Hồ Chí Minh",
+        "journey_departure": "Hà Nội",
+        "departure_time": 564483600000,
+        "arrive_time": 564483600000,
+        "train_id": "1",
+        "train_name": "Seraphime",
+        "carriage_id": "1",
+        "carriage_number": 6,
+        "chair_id": "1",
+        "chair_name": "Sera 1",
+        "chair_type": "Super BB",
+        "total_price": 200.8,
       })
+
+
     }
   }
 
@@ -172,7 +202,7 @@ export default function Trippage() {
                 <Button type='default' shape='round' color='transparent'>View Guidelines</Button>
               </div>
             </div>
-            <Checkbox value={acceptTerm} onChange={(e) => setAccept(e.target.value)}>I understand and agree to the rules of this fare, and the Terms & Conditions, Cancellation and  Refund Policy</Checkbox>
+            <Checkbox value={acceptTerm} onChange={(e) => setAccept(e.target.checked)}>I understand and agree to the rules of this fare, and the Terms & Conditions, Cancellation and  Refund Policy</Checkbox>
             <div className='flex justify-center my-4'>
               <Button onClick={handleSubmit} size='large' type='primary'>Continue Booking</Button>
             </div>

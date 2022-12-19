@@ -1,8 +1,44 @@
-import { Button, Checkbox, Col, Input, Row, Select, Steps } from 'antd'
-import React from 'react'
+import { Button, Checkbox, Col, Input, Row, Select, Steps, notification } from 'antd'
+import React, { useState } from 'react'
 import { FaClock, FaHome, FaTrain } from 'react-icons/fa'
+import { useNavigate, useParams, useRoutes } from 'react-router-dom'
+import QRCode from 'qrcode'
+import { useEffect } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { apis } from '../api'
 
 export default function PaymentPage() {
+  const { orderId } = useParams();
+  const navigate = useNavigate();
+
+  if (!orderId) navigate("/")
+
+  const { isLoading, data, error } = useQuery(["order", orderId], () => apis.tickets.retrieve(orderId), { refetchInterval: 1000 })
+
+  const [qrCode, setQrCode] = useState(null)
+
+  useEffect(() => {
+    QRCode.toDataURL(`http://146.190.98.185:8080/v1/tickets/${orderId}/payment-ticket`)
+      .then(url => {
+        setQrCode(url)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }, [])
+
+  useEffect(() => {
+    if (data && data.data.state === "success") {
+      notification.success({ message: "Payment received!. Issuing ticket now..." })
+      setTimeout(() => {
+        navigate(`/ticket/${data.data.id}`, { replace: true })
+      }, 500)
+    }
+  }, [data])
+
+
+  if (!qrCode) return <div>Loading...</div>
+
   return (
     <div className='bg-gray-100 h-full min-h-full'>
       <div style={{ maxWidth: 1280 }} className="mx-auto py-8">
@@ -31,7 +67,7 @@ export default function PaymentPage() {
               <div>
                 <h3><span>Payment with E-wallet MoMo</span></h3>
                 <div className='flex flex-col items-center justify-center'>
-                  <img className='block' style={{ width: 500 }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png" />
+                  <img className='block' style={{ width: 500 }} src={qrCode} />
                   <p>Thời hạn thanh toán: 30s</p>
                 </div>
               </div>

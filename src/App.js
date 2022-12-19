@@ -20,7 +20,7 @@ function App() {
       element: <Trippage />,
     },
     {
-      path: "/payment/*",
+      path: "/payment/:orderId",
       element: <PaymentPage />,
     },
     {

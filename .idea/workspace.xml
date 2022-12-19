@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5496c51e-f43d-487b-9cab-a10b3448e977" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/SearchBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Listpage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Listpage.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="5496c51e-f43d-487b-9cab-a10b3448e977" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,6 +60,7 @@
       <workItem from="1669483937874" duration="3602000" />
       <workItem from="1669560033691" duration="200000" />
       <workItem from="1669560242330" duration="133000" />
+      <workItem from="1670034328129" duration="22000" />
     </task>
     <servers />
   </component>

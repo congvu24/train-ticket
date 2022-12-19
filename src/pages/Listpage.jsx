@@ -3,7 +3,7 @@ import { Row, Col, Button, Collapse, Checkbox, Divider, Radio } from 'antd'
 import { LoadingOutlined } from "@ant-design/icons"
 import React from 'react'
 import { FaArrowRight } from 'react-icons/fa'
-import {useNavigate, useSearchParams} from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { apis } from '../api'
 import SearchBar from '../components/SearchBar'
 import _ from "lodash"
@@ -15,7 +15,7 @@ export default function Listpage() {
 
   const { isLoading, data } = useQuery(["trips", searchParams.get("start"), searchParams.get("end")], () => apis.trips.retrieve(`populate=deep&filters[startStation]p=[stationCode][$eq]=${searchParams.get("start")}&filters[endStation]p=[stationCode][$eq]=${searchParams.get("end")}`))
 
-  const handleClickChair = (tripId, chair)=>{
+  const handleClickChair = (tripId, chair) => {
     navigate(`/trip?tripCode=${tripId}&chair=${chair}`);
   };
 
@@ -38,42 +38,16 @@ export default function Listpage() {
                       <Collapse.Panel header="Departure time" key="1">
                         <div >
                           <div className='w-full mb-2'>
-                            <Checkbox className='w-full' name="hello" value="1"><div className='flex  text-sm items-center justify-between w-full'><span className='inline-block mr-6'>Early morning</span> <span className='text-gray-400'>12am - 6am</span></div></Checkbox>
+                            <Checkbox className='w-full' name="hello" value="1"><div className='flex  text-sm items-center justify-between w-full'><span className='inline-block mr-6 flex-1'>Early morning</span> <span className='text-gray-400 text-right ml-auto inline-block'>5am - 10am</span></div></Checkbox>
                           </div>
                           <div className='w-full mb-2'>
-                            <Checkbox className='w-full' name="hello" value="2"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6'>Early morning</span> <span className='text-gray-400'>12am - 6am</span></div></Checkbox>
+                            <Checkbox className='w-full' name="hello" value="2"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6 flex-1'>Noon</span> <span className='text-gray-400 text-right ml-auto inline-block'>10am - 2pm</span></div></Checkbox>
                           </div>
                           <div className='w-full mb-2'>
-                            <Checkbox className='w-full' name="hello" value="3"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6'>Early morning</span> <span className='text-gray-400'>12am - 6am</span></div></Checkbox>
+                            <Checkbox className='w-full' name="hello" value="3"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6 flex-1'>Afternoon</span> <span className='text-gray-400 text-right ml-auto inline-block'>2pm - 7pm</span></div></Checkbox>
                           </div>
                           <div className='w-full mb-2'>
-                            <Checkbox className='w-full' name="hello" value="4"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6'>Early morning</span> <span className='text-gray-400'>12am - 6am</span></div></Checkbox>
-                          </div>
-                        </div>
-                      </Collapse.Panel>
-                    </Collapse>
-                  </div>
-                </div>
-                <div className='bg-gray-100 rounded mb-4'>
-                  <div className='p-2 flex items-center justify-between'>
-                    <span>Filter by</span>
-                    <Button type="link">Reset all</Button>
-                  </div>
-                  <div className='p-2 bg-white'>
-                    <Collapse defaultActiveKey={["1"]}>
-                      <Collapse.Panel header="Departure time" key="1">
-                        <div >
-                          <div className='w-full mb-2'>
-                            <Checkbox className='w-full' name="hello" value="1"><div className='flex  text-sm items-center justify-between w-full'><span className='inline-block mr-6'>Early morning</span> <span className='text-gray-400'>12am - 6am</span></div></Checkbox>
-                          </div>
-                          <div className='w-full mb-2'>
-                            <Checkbox className='w-full' name="hello" value="2"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6'>Early morning</span> <span className='text-gray-400'>12am - 6am</span></div></Checkbox>
-                          </div>
-                          <div className='w-full mb-2'>
-                            <Checkbox className='w-full' name="hello" value="3"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6'>Early morning</span> <span className='text-gray-400'>12am - 6am</span></div></Checkbox>
-                          </div>
-                          <div className='w-full mb-2'>
-                            <Checkbox className='w-full' name="hello" value="4"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6'>Early morning</span> <span className='text-gray-400'>12am - 6am</span></div></Checkbox>
+                            <Checkbox className='w-full' name="hello" value="4"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6 flex-1'>At night</span> <span className='text-gray-400 text-right ml-auto inline-block'>8pm - 5am</span></div></Checkbox>
                           </div>
                         </div>
                       </Collapse.Panel>
@@ -87,19 +61,39 @@ export default function Listpage() {
                   </div>
                   <div className='p-2 bg-white'>
                     <Collapse defaultActiveKey={["1"]}>
-                      <Collapse.Panel header="Departure time" key="1">
+                      <Collapse.Panel header="Chair class" key="1">
                         <div >
                           <div className='w-full mb-2'>
-                            <Checkbox className='w-full' name="hello" value="1"><div className='flex  text-sm items-center justify-between w-full'><span className='inline-block mr-6'>Early morning</span> <span className='text-gray-400'>12am - 6am</span></div></Checkbox>
+                            <Checkbox className='w-full' name="hello" value="1"><div className='flex  text-sm items-center justify-between w-full'><span className='inline-block mr-6'>High class</span></div></Checkbox>
                           </div>
                           <div className='w-full mb-2'>
-                            <Checkbox className='w-full' name="hello" value="2"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6'>Early morning</span> <span className='text-gray-400'>12am - 6am</span></div></Checkbox>
+                            <Checkbox className='w-full' name="hello" value="2"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6'>Medium class</span></div></Checkbox>
                           </div>
                           <div className='w-full mb-2'>
-                            <Checkbox className='w-full' name="hello" value="3"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6'>Early morning</span> <span className='text-gray-400'>12am - 6am</span></div></Checkbox>
+                            <Checkbox className='w-full' name="hello" value="3"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6'>Normal class</span></div></Checkbox>
+                          </div>
+                        </div>
+                      </Collapse.Panel>
+                    </Collapse>
+                  </div>
+                </div>
+                <div className='bg-gray-100 rounded mb-4'>
+                  <div className='p-2 flex items-center justify-between'>
+                    <span>Filter by</span>
+                    <Button type="link">Reset all</Button>
+                  </div>
+                  <div className='p-2 bg-white'>
+                    <Collapse defaultActiveKey={["1"]}>
+                      <Collapse.Panel header="Trip duration" key="1">
+                        <div >
+                          <div className='w-full mb-2'>
+                            <Checkbox className='w-full' name="hello" value="1"><div className='flex  text-sm items-center justify-between w-full'><span className='inline-block mr-6'>1-5 hours</span></div></Checkbox>
                           </div>
                           <div className='w-full mb-2'>
-                            <Checkbox className='w-full' name="hello" value="4"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6'>Early morning</span> <span className='text-gray-400'>12am - 6am</span></div></Checkbox>
+                            <Checkbox className='w-full' name="hello" value="2"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6'>5-10 hours</span></div></Checkbox>
+                          </div>
+                          <div className='w-full mb-2'>
+                            <Checkbox className='w-full' name="hello" value="3"><div className='flex text-sm  items-center justify-between w-full'><span className='inline-block mr-6'>{">10 hours"}</span></div></Checkbox>
                           </div>
                         </div>
                       </Collapse.Panel>
@@ -174,7 +168,7 @@ export default function Listpage() {
                                 <p className='mb-2 font-bold'>{_.get(chair, "chair_class.data.attributes.name", 0)}</p>
                                 <p className='mb-2 text-xs font-semibold'>{_.get(chair, "price") || _.get(chair, "chair_class.data.attributes.price")} VND</p>
                                 <p className='mb-2 text-xs text-gray-500'>12/{_.get(chair, "quantity", 0)} free</p>
-                                <Button type="primary" shape='round' onClick={()=>handleClickChair(_.get(item, "id", null), _.get(chair, "chair_class.data.id", null))}>Book now</Button>
+                                <Button type="primary" shape='round' onClick={() => handleClickChair(_.get(item, "id", null), _.get(chair, "chair_class.data.id", null))}>Book now</Button>
                               </div>
                             ))}
 
