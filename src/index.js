@@ -5,7 +5,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "antd/dist/antd.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createBrowserRouter, BrowserRouter as Router } from "react-router-dom";
+import {
+  createBrowserRouter,
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient();
 
@@ -15,7 +21,10 @@ root.render(
   <React.StrictMode>
     <Router>
       <QueryClientProvider client={queryClient}>
-        <App />
+        <Routes>
+          <Route path="/admin" element={<Admin />} />
+          <Route path="*" element={<App />} />
+        </Routes>
       </QueryClientProvider>
     </Router>
   </React.StrictMode>

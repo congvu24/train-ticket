@@ -12,6 +12,18 @@ export const callCMSGetApi = async (endPoint, data) => {
   }
 };
 
+export const callCMSPostApi = async (endPoint, data) => {
+  try {
+    const baseUrl = "http://103.142.137.207:1337";
+
+    const response = await axios.post(baseUrl + endPoint, data);
+
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+};
+
 export const callPostCheckoutServiceApi = async (endPoint, data) => {
   try {
     const baseUrl = "http://146.190.98.185:8080/v1";
@@ -57,5 +69,9 @@ export const apis = {
   tickets: {
     create: (data) => callPostCheckoutServiceApi(`/tickets`, data),
     retrieve: (id) => callGetCheckoutServiceApi(`/tickets/${id}`),
+    getAll: () => callGetCheckoutServiceApi(`/tickets`),
+  },
+  admin: {
+    login: (data) => callCMSPostApi(`/admin/login`, data),
   },
 };
