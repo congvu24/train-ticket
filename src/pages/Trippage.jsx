@@ -88,20 +88,20 @@ export default function Trippage() {
         traveler,
         chairId,
         tripCode,
-        "name": "Thái Bình",
-        "journey_id": "1",
-        "journey_arrive": "Hồ Chí Minh",
-        "journey_departure": "Hà Nội",
-        "departure_time": 564483600000,
-        "arrive_time": 564483600000,
-        "train_id": "1",
-        "train_name": "Seraphime",
+        "name": _.get(traveler[0], "name", ""),
+        "journey_id": String(tripCode),
+        "journey_arrive": _.get(trip, "attributes.startStation.data.attributes.name", "NULL"),
+        "journey_departure": _.get(trip, "attributes.endStation.data.attributes.name", "NULL"),
+        "departure_time": new Date(_.get(trip, "attributes.startDate", "NULL")).getTime(),
+        "arrive_time": new Date(_.get(trip, "attributes.endDate", "NULL")).getTime(),
+        "train_id": String(_.get(trip, 'attributes.train.data.id', null)),
+        "train_name": _.get(trip, 'attributes.train.data.attributes.trainCode', null),
         "carriage_id": "1",
-        "carriage_number": 6,
-        "chair_id": "1",
-        "chair_name": "Sera 1",
-        "chair_type": "Super BB",
-        "total_price": 200.8,
+        "carriage_number": 1,
+        "chair_id": String(_.get(chair, "chair_class.data.id")),
+        "chair_name": _.get(chair, "chair_class.data.attributes.name"),
+        "chair_type": _.get(chair, "chair_class.data.attributes.name"),
+        "total_price": chairPrice * numberTraveler + RESERVATION_FARE,
       })
 
 
@@ -180,7 +180,8 @@ export default function Trippage() {
                   <p className='font-semibold mb-1'>Enter your email:</p>
                   <Input placeholder='Email' size='large'
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)} />
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                   <p className='text-xs text-gray-500'>Your email id will be used only for sending Train related communication.</p>
                 </div>
                 <div>

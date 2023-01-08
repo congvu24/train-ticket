@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { Row, Col, Button, Collapse, Checkbox, Divider, Radio } from 'antd'
 import { LoadingOutlined } from "@ant-design/icons"
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaArrowRight } from 'react-icons/fa'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { apis } from '../api'
@@ -12,12 +12,17 @@ import moment from 'moment'
 export default function Listpage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const query = `populate=deep&filters[startStation]p=[stationCode][$eq]=${searchParams.get("start")}&filters[endStation]p=[stationCode][$eq]=${searchParams.get("end")}&filters[startDate][$gte]=${searchParams.get("time")}`
 
-  const { isLoading, data } = useQuery(["trips", searchParams.get("start"), searchParams.get("end")], () => apis.trips.retrieve(`populate=deep&filters[startStation]p=[stationCode][$eq]=${searchParams.get("start")}&filters[endStation]p=[stationCode][$eq]=${searchParams.get("end")}`))
+  const { isLoading, data, refetch } = useQuery(["trips", searchParams.get("start"), searchParams.get("end")], () => apis.trips.retrieve(query))
 
   const handleClickChair = (tripId, chair) => {
     navigate(`/trip?tripCode=${tripId}&chair=${chair}`);
   };
+
+  useEffect(() => {
+    refetch()
+  }, [query])
 
 
   return (
@@ -105,18 +110,17 @@ export default function Listpage() {
             <Col span={18}>
               <div className='bg-white p-4 my-4 rounded  '>
                 <div className='flex items-center'>
-                  <h2 className='flex items-center text-xl'><span>Delhi All Stations</span> <FaArrowRight className='mx-2' /> <span>(NDLS)HowrahJn(HWH)</span></h2>
+                  <h2 className='flex items-center text-xl'><span>{searchParams.get("start")}</span> <FaArrowRight className='mx-2' /> <span>{searchParams.get("end")}</span></h2>
                   <Divider type='vertical' />
-                  <h2 className='text-xl'>14 Nov 2022</h2>
+                  <h2 className='text-xl'>{new Date(Number(searchParams.get("time")) || '').toLocaleDateString()}</h2>
                 </div>
                 <div className='mt-4'>
                   <div>
                     <p className='mb-2 text-sm font-semibold text-gray-500'>Sort by:</p>
-                    <Radio.Group>
-                      <Radio.Button value="large">Large</Radio.Button>
-                      <Radio.Button value="default">Default</Radio.Button>
-                      <Radio.Button value="small">Small</Radio.Button>
-                      <Radio.Button value="small">Small</Radio.Button>
+                    <Radio.Group defaultValue="time">
+                      <Radio.Button value="time">Time</Radio.Button>
+                      <Radio.Button value="price">Price</Radio.Button>
+                      <Radio.Button value="availability">Availability</Radio.Button>
                     </Radio.Group>
                   </div>
                 </div>

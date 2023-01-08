@@ -1,4 +1,4 @@
-import { Select, Input, Button } from 'antd'
+import { Select, Input, Button, message } from 'antd'
 import React, { useState } from 'react'
 import { FaTimes } from 'react-icons/fa';
 
@@ -21,7 +21,11 @@ export default function Traveler({ updateList }) {
         setNational("")
     }
 
-    const addPerson = (data: any) => {
+    const addPerson = (data) => {
+        if (!name || !age || !id || !gender || !national) {
+            return message.error("Please fill all the fields")
+        }
+
         const newList = list;
         newList.push(data);
         setList([...newList]);

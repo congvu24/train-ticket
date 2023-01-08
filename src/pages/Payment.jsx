@@ -68,18 +68,16 @@ export default function PaymentPage() {
                 <h3><span>Payment with E-wallet MoMo</span></h3>
                 <div className='flex flex-col items-center justify-center'>
                   <img className='block' style={{ width: 500 }} src={qrCode} />
-                  <p>Thời hạn thanh toán: 30s</p>
+                  {/* <p>Thời hạn thanh toán: 30s</p> */}
                 </div>
               </div>
               <div>
-                <p>Lưu ý:</p>
+                <p>Attentions:</p>
                 <ul>
-                  <li>Quý khách vui lòng thanh toán trong thời gian giao dịch.</li>
-                  <li>Quá thời gian trên, vé giữ chỗ của Quý khách sẽ tự động hủy.</li>
-                  <li> Vé trẻ em từ 1 tuổi sẽ được tính là 01 vé.</li>
-                  <li>Quý khách có mặt trước 10 phút giờ tàu chạy để làm thủ tục xuất bến.</li>
-                  <li>Ghế ngồi tự do.</li>
-                  <li>Vé không hoàn, không đổi - Mọi thắc mắc cần hỗ trợ xin vui lòng liên hệ tổng đài: 1900.63.68.30</li>
+                  <li>Please complete the payment in time</li>
+                  <li>If the time is out, your order will be cancel</li>
+                  <li>Do not leave this page until getting the payment result</li>
+                  <li>If there is any issue with the payment, please contact: 1900.63.68.30</li>
                 </ul>
               </div>
             </div>

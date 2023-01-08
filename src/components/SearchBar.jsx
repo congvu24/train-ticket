@@ -12,7 +12,7 @@ export default function SearchBar() {
     // const route = ();
     const path = window.location.pathname;
 
-    const isListPage = path == "/list"
+    const isListPage = path.includes("/list")
 
     const { data: dataStation, isLoading: isLoadingStation } = useQuery(["station"], () => apis.stations.retrieve())
     const [startStation, setStartStation] = useState(searchParams.get("start") || "")
@@ -27,10 +27,10 @@ export default function SearchBar() {
             if (isListPage) {
                 searchParams.set("start", startStation);
                 searchParams.set("end", endStation);
-                searchParams.set("time", departureTime.getTime())
+                searchParams.set("time", new Date(departureTime).getTime());
             }
 
-            const query = `start=${startStation}&end=${endStation}&time=${departureTime.getTime()}`
+            const query = `start=${startStation}&end=${endStation}&time=${new Date(departureTime).getTime()}`
             return navigate(`/list?${query}`)
         }
     }

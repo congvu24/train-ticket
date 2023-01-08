@@ -20,66 +20,66 @@ export default function Homepage() {
             <Row gutter={18}>
               <Col span={8} className="my-2">
                 <div className='flex items-center justify-between shadow-md p-4'>
-                  <img src="https://www.easemytrip.com/images/train-img/IRCTC-logo-nw2.png" alt="logo" className="w-12 block mr-4" width={50} />
+                  <img src="https://cdn-icons-png.flaticon.com/512/3989/3989569.png" alt="logo" className="w-12 block mr-4" width={50} />
                   <div>
-                    <p className='font-semibold'>IRCTC Authorised Partner</p>
+                    <p className='font-semibold'>Convenience</p>
                     <p className='text-xs text-gray-500'>
-                      EaseMytrip is authorized partner of IRCTC, booking train tickets since 2018.
+                      You can book train tickets from the comfort of your own home or office, without having to visit a train station or travel agent.
                     </p>
                   </div>
                 </div>
               </Col>
               <Col span={8} className="my-2">
                 <div className='flex items-center justify-between shadow-md p-4'>
-                  <img src="https://www.easemytrip.com/images/train-img/IRCTC-logo-nw2.png" alt="logo" className="w-12 block mr-4" width={50} />
+                  <img src="https://cdn-icons-png.flaticon.com/512/5129/5129353.png" alt="logo" className="w-12 block mr-4" width={50} />
                   <div>
-                    <p className='font-semibold'>IRCTC Authorised Partner</p>
+                    <p className='font-semibold'>Ease of use</p>
                     <p className='text-xs text-gray-500'>
-                      EaseMytrip is authorized partner of IRCTC, booking train tickets since 2018.
+                      Our website is designed to be easy to use, with a simple and straightforward booking process.
                     </p>
                   </div>
                 </div>
               </Col>
               <Col span={8} className="my-2">
                 <div className='flex items-center justify-between shadow-md p-4'>
-                  <img src="https://www.easemytrip.com/images/train-img/IRCTC-logo-nw2.png" alt="logo" className="w-12 block mr-4" width={50} />
+                  <img src="https://cdn-icons-png.flaticon.com/512/2854/2854320.png" alt="logo" className="w-12 block mr-4" width={50} />
                   <div>
-                    <p className='font-semibold'>IRCTC Authorised Partner</p>
+                    <p className='font-semibold'>Competitive prices</p>
                     <p className='text-xs text-gray-500'>
-                      EaseMytrip is authorized partner of IRCTC, booking train tickets since 2018.
+                      We offer competitive prices on train tickets and often have special offers and discounts available.
                     </p>
                   </div>
                 </div>
               </Col>
               <Col span={8} className="my-2">
                 <div className='flex items-center justify-between shadow-md p-4'>
-                  <img src="https://www.easemytrip.com/images/train-img/IRCTC-logo-nw2.png" alt="logo" className="w-12 block mr-4" width={50} />
+                  <img src="https://cdn-icons-png.flaticon.com/512/475/475438.png" alt="logo" className="w-12 block mr-4" width={50} />
                   <div>
-                    <p className='font-semibold'>IRCTC Authorised Partner</p>
+                    <p className='font-semibold'>Wide selection</p>
                     <p className='text-xs text-gray-500'>
-                      EaseMytrip is authorized partner of IRCTC, booking train tickets since 2018.
+                      We have a wide selection of trains and routes available, so you can find the best option for your travel needs.
                     </p>
                   </div>
                 </div>
               </Col>
               <Col span={8} className="my-2">
                 <div className='flex items-center justify-between shadow-md p-4'>
-                  <img src="https://www.easemytrip.com/images/train-img/IRCTC-logo-nw2.png" alt="logo" className="w-12 block mr-4" width={50} />
+                  <img src="https://cdn-icons-png.flaticon.com/512/2500/2500132.png" alt="logo" className="w-12 block mr-4" width={50} />
                   <div>
-                    <p className='font-semibold'>IRCTC Authorised Partner</p>
+                    <p className='font-semibold'>Flexibility</p>
                     <p className='text-xs text-gray-500'>
-                      EaseMytrip is authorized partner of IRCTC, booking train tickets since 2018.
+                      You can book tickets in advance or last minute, depending on your travel plans and cancel anytime before the trip
                     </p>
                   </div>
                 </div>
               </Col>
               <Col span={8} className="my-2">
                 <div className='flex items-center justify-between shadow-md p-4'>
-                  <img src="https://www.easemytrip.com/images/train-img/IRCTC-logo-nw2.png" alt="logo" className="w-12 block mr-4" width={50} />
+                  <img src="https://cdn-icons-png.flaticon.com/512/2706/2706950.png" alt="logo" className="w-12 block mr-4" width={50} />
                   <div>
-                    <p className='font-semibold'>IRCTC Authorised Partner</p>
+                    <p className='font-semibold'>Customer support</p>
                     <p className='text-xs text-gray-500'>
-                      EaseMytrip is authorized partner of IRCTC, booking train tickets since 2018.
+                      We have a dedicated customer support team available to assist you with any questions or issues you may have.
                     </p>
                   </div>
                 </div>
@@ -94,40 +94,39 @@ export default function Homepage() {
             <Row gutter={20}>
               <Col span={12}>
                 <div className='mb-2 flex items-center justify-between p-4 border-b border-dashed'>
-                  <p className='mb-0'>NEW DELHI -JAMMU TAWI(NDLS-JAT)</p>
+                  <p className='mb-0'>Ha Noi - Ho Chi Minh(HN-HCM)</p>
                   <Button>Search train</Button>
                 </div>
                 <div className='mb-2 flex items-center justify-between p-4 border-b border-dashed'>
-                  <p className='mb-0'>NEW DELHI -JAMMU TAWI(NDLS-JAT)</p>
+                  <p className='mb-0'>Ho Chi Minh - Ha Noi(HCM-HN)</p>
                   <Button>Search train</Button>
                 </div>
                 <div className='mb-2 flex items-center justify-between p-4 border-b border-dashed'>
-                  <p className='mb-0'>NEW DELHI -JAMMU TAWI(NDLS-JAT)</p>
+                  <p className='mb-0'>Ho Chi Minh - Hoi An(HCM-HA)</p>
                   <Button>Search train</Button>
                 </div>
                 <div className='mb-2 flex items-center justify-between p-4 border-b border-dashed'>
-                  <p className='mb-0'>NEW DELHI -JAMMU TAWI(NDLS-JAT)</p>
+                  <p className='mb-0'>Ha Noi - Da Nang(HN-DN)</p>
                   <Button>Search train</Button>
                 </div>
               </Col>
               <Col span={12}>
                 <div className='mb-2 flex items-center justify-between p-4 border-b border-dashed'>
-                  <p className='mb-0'>NEW DELHI -JAMMU TAWI(NDLS-JAT)</p>
+                  <p className='mb-0'>Vinh - Nghe An(VI-NA)</p>
                   <Button>Search train</Button>
                 </div>
                 <div className='mb-2 flex items-center justify-between p-4 border-b border-dashed'>
-                  <p className='mb-0'>NEW DELHI -JAMMU TAWI(NDLS-JAT)</p>
+                  <p className='mb-0'>Quan Binh - Hoi An(QB-HA)</p>
                   <Button>Search train</Button>
                 </div>
                 <div className='mb-2 flex items-center justify-between p-4 border-b border-dashed'>
-                  <p className='mb-0'>NEW DELHI -JAMMU TAWI(NDLS-JAT)</p>
+                  <p className='mb-0'>Ha Noi - SaPa(HN-SP)</p>
                   <Button>Search train</Button>
                 </div>
                 <div className='mb-2 flex items-center justify-between p-4 border-b border-dashed'>
-                  <p className='mb-0'>NEW DELHI -JAMMU TAWI(NDLS-JAT)</p>
+                  <p className='mb-0'>Da Lat - Ho Chi Minh(DL-HCM)</p>
                   <Button>Search train</Button>
                 </div>
-
               </Col>
             </Row>
           </div>

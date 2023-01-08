@@ -50,10 +50,10 @@ const columns = [
     },
     {
         title: 'Departure station',
-        dataIndex: 'departure_station',
-        key: 'departure_station',
+        dataIndex: 'journey_departure',
+        key: 'journey_departure',
     },
-    { title: "Destination station", dataIndex: "destination_station", key: "destination_station" },
+    { title: "Destination station", dataIndex: "journey_arrive", key: "journey_arrive" },
     { title: "Departure time", dataIndex: "departure_time", key: "departure_time", render: (value) => new Date(value).toLocaleDateString() + " " + new Date(value).toLocaleTimeString() },
     { title: "Arrive time", dataIndex: "arrive_time", key: "arrive_time", render: (value) => new Date(value).toLocaleDateString() + " " + new Date(value).toLocaleTimeString() },
     { title: "Number of tickets", dataIndex: "number_of_tickets", key: "number_of_tickets", render: (key, data) => data.travelers?.length },
@@ -65,23 +65,6 @@ const AdminComponent: React.FC = () => {
     const user = JSON.parse(localStorage.getItem('user') || '{}')
 
     const { data, isLoading } = useQuery(['all-tickets'], () => apis.tickets.getAll());
-
-
-    // const dataSource = [
-    //     {
-    //         key: '1',
-    //         name: 'Mike',
-    //         age: 32,
-    //         address: '10 Downing Street',
-    //     },
-    //     {
-    //         key: '2',
-    //         name: 'John',
-    //         age: 42,
-    //         address: '10 Downing Street',
-    //     },
-    // ];
-
 
     const items: MenuProps['items'] = [
 

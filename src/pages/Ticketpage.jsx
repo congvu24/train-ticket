@@ -36,14 +36,11 @@ export default function TicketPage() {
             </div>
           </div>
           <div>
-            <p>Lưu ý:</p>
+            <p>Attention:</p>
             <ul>
-              <li>Quý khách vui lòng thanh toán trong thời gian giao dịch.</li>
-              <li>Quá thời gian trên, vé giữ chỗ của Quý khách sẽ tự động hủy.</li>
-              <li> Vé trẻ em từ 1 tuổi sẽ được tính là 01 vé.</li>
-              <li>Quý khách có mặt trước 10 phút giờ tàu chạy để làm thủ tục xuất bến.</li>
-              <li>Ghế ngồi tự do.</li>
-              <li>Vé không hoàn, không đổi - Mọi thắc mắc cần hỗ trợ xin vui lòng liên hệ tổng đài: 1900.63.68.30</li>
+              <li>Please show your ticket to the ticket inspector before boarding</li>
+              <li>Your ticket will be send to your email</li>
+              <li>Please contact us as soon as possible if you have any problem</li>
             </ul>
           </div>
         </div>
