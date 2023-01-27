@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const callCMSGetApi = async (endPoint, data) => {
   try {
-    const baseUrl = "http://103.142.137.207:1337";
+    const baseUrl = `http://${process.env.REACT_APP_PUBLIC_IP}:1337`;
 
     const response = await axios.get(baseUrl + endPoint);
 
@@ -14,7 +14,7 @@ export const callCMSGetApi = async (endPoint, data) => {
 
 export const callCMSPostApi = async (endPoint, data) => {
   try {
-    const baseUrl = "http://103.142.137.207:1337";
+    const baseUrl = `http://${process.env.REACT_APP_PUBLIC_IP}:1337`;
 
     const response = await axios.post(baseUrl + endPoint, data);
 
