@@ -42,12 +42,12 @@ export default function Trippage() {
   // =============
 
 
-  const [traveler, setTraveler] = useState([])
+  const [travelers, setTraveler] = useState([])
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [acceptTerm, setAccept] = useState(false);
 
-  const numberTraveler = traveler.length;
+  const numberTraveler = travelers.length;
 
   const getTotal = (quantity = 0, fareEach = 0, taxPercent = 0, addition = 0) => {
     if (quantity == 0) return 0;
@@ -85,10 +85,10 @@ export default function Trippage() {
       mutateCreateTicket.mutate({
         email,
         phone,
-        traveler,
+        travelers,
         chairId,
         tripCode,
-        "name": _.get(traveler[0], "name", ""),
+        "name": _.get(travelers[0], "name", ""),
         "journey_id": String(tripCode),
         "journey_arrive": _.get(trip, "attributes.startStation.data.attributes.name", "NULL"),
         "journey_departure": _.get(trip, "attributes.endStation.data.attributes.name", "NULL"),
