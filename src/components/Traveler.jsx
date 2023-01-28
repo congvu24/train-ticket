@@ -104,7 +104,7 @@ export default function Traveler({ updateList }) {
                     age,
                     national,
                     gender,
-                    id: id_card
+                    id_card
                 })
             }} className='ml-auto my-2 block' type='primary'>Add Passenger</Button></div>
         </div>
