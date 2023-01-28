@@ -9,7 +9,7 @@ export default function Traveler({ updateList }) {
     const [name, setName] = useState("");
     const [age, setAge] = useState("")
     const [national, setNational] = useState("");
-    const [id, setId] = useState("")
+    const [id_card, setId] = useState("")
 
     const [list, setList] = useState([]);
 
@@ -22,7 +22,7 @@ export default function Traveler({ updateList }) {
     }
 
     const addPerson = (data) => {
-        if (!name || !age || !id || !gender || !national) {
+        if (!name || !age || !id_card || !gender || !national) {
             return message.error("Please fill all the fields")
         }
 
@@ -86,7 +86,7 @@ export default function Traveler({ updateList }) {
                     <Input onChange={(e) => setAge(e.target.value)} value={age} type="number" placeholder='Age' style={{ width: "100%" }} />
                 </div>
                 <div className='mr-1 flex-1'>
-                    <Input onChange={(e) => setId(e.target.value)} value={id} placeholder='ID number' style={{ width: "100%" }} />
+                    <Input onChange={(e) => setId(e.target.value)} value={id_card} placeholder='ID number' style={{ width: "100%" }} />
                 </div>
                 <div className='flex-1'>
                     <Select placeholder="Nationality" style={{ width: "100%" }}
@@ -104,7 +104,7 @@ export default function Traveler({ updateList }) {
                     age,
                     national,
                     gender,
-                    id
+                    id: id_card
                 })
             }} className='ml-auto my-2 block' type='primary'>Add Passenger</Button></div>
         </div>
